@@ -1,6 +1,6 @@
 {ViewNavigationController} = require "ViewNavigationController"
 
-bg = new BackgroundLayer
+Screen.backgroundColor = "white"
 
 vnc = new ViewNavigationController
 
@@ -34,7 +34,7 @@ viewUpdate = new Layer
 	parent: vnc
 
 # To remove the back button from a view, do this:
-# viewUpdate.backButton = false
+# vnc.removeBackButton(viewUpdate)
 
 # # # # # # # # # # # # # # # # # # # # # # # #
 # BUTTONS
@@ -72,9 +72,15 @@ btnSiri.on Events.Click, ->
 
 btnUpdate.on Events.Click, ->
 	vnc.transition viewUpdate
-	
-# To change the direction of the transition, just add a transition property.
-# "up", "down", "left" and "right" are the only built-in transitions available.
-# Example:
-# btnUpdate.on Events.Click, ->
-# 	vnc.transition viewUpdate, direction = "up"
+
+###
+To change the direction of the transition,
+just add a "direction" property.
+
+Example:
+btnUpdate.on Events.Click, ->
+	vnc.transition viewUpdate, direction = "up"
+
+The transitions available are:
+"up", "down", "left" and "right"
+###
